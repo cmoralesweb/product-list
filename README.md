@@ -1,6 +1,7 @@
 # Mobile Store — Product List Frontend
 
-A mobile phone e-commerce storefront built with React, TypeScript, and Vite. Users can browse phones, search/filter by brand or model, view detailed specifications, select color/storage options, and add items to a cart.
+A mobile phone e-commerce storefront built with React, TypeScript, and Vite. Users can browse phones, search/filter by
+brand or model, view detailed specifications, select color/storage options, and add items to a cart.
 
 ## Architecture
 
@@ -10,14 +11,30 @@ A mobile phone e-commerce storefront built with React, TypeScript, and Vite. Use
 domain ← application ← infrastructure ← presentation
 ```
 
-| Layer | Directory | Responsibility |
-|---|---|---|
-| **Domain** | `src/domain/` | Pure models (`Product`, `Cart`) and port interfaces (`ProductRepository`, `CartRepository`, `CacheService`) |
-| **Application** | `src/application/` | Use case classes with a single `execute()` method, orchestrating ports |
-| **Infrastructure** | `src/infrastructure/` | API adapters (`ProductApiAdapter`, `CartApiAdapter`), `LocalStorageCacheAdapter`, `HttpClient` |
-| **Presentation** | `src/presentation/` | React UI following Atomic Design (atoms → molecules → organisms → templates → pages), hooks, context, router, CSS |
+| Layer              | Directory             | Responsibility                                                                                                    |
+|--------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------|
+| **Domain**         | `src/domain/`         | Pure models (`Product`, `Cart`) and port interfaces (`ProductRepository`, `CartRepository`, `CacheService`)       |
+| **Application**    | `src/application/`    | Use case classes with a single `execute()` method, orchestrating ports                                            |
+| **Infrastructure** | `src/infrastructure/` | API adapters (`ProductApiAdapter`, `CartApiAdapter`), `LocalStorageCacheAdapter`, `HttpClient`                    |
+| **Presentation**   | `src/presentation/`   | React UI following Atomic Design (atoms → molecules → organisms → templates → pages), hooks, context, router, CSS |
 
 **DI**: Dependencies are created in `App.tsx` and passed as props — no DI framework.
+
+## Cart Model
+
+The `Cart` domain model currently only tracks `count` because the API's `POST /api/cart` response only returns a count,
+not the list of added items. A more robust version would store which products were added (with quantities) in the domain
+model, but the current API contract doesn't support it.
+
+## Project Structure
+
+```
+src/
+├── domain/           # Pure business logic (models, ports)
+├── application/      # Use cases
+├── infrastructure/   # API adapters, cache, HTTP client
+└── presentation/     # React components, hooks, context, router, styles
+```
 
 ## Quick Start
 
@@ -33,38 +50,46 @@ pnpm lint:css      # Stylelint on src/**/*.css
 
 ## Configuration
 
-- **`VITE_API_BASE_URL`** — API base URL (defaults to `https://itx-frontend-test.onrender.com`). Set via `.env.local` or environment.
+- **`VITE_API_BASE_URL`** — API base URL (defaults to `https://itx-frontend-test.onrender.com`). Set via `.env.local` or
+  environment.
 
 ## Routes
 
-| Route | Page | Description |
-|---|---|---|
-| `/` | `ProductListPage` | Search input + grid of product cards with debounced filtering |
+| Route          | Page                | Description                                                          |
+|----------------|---------------------|----------------------------------------------------------------------|
+| `/`            | `ProductListPage`   | Search input + grid of product cards with debounced filtering        |
 | `/product/:id` | `ProductDetailPage` | Full product detail with specs, color/storage selectors, add-to-cart |
 
 ## Tech Stack
 
-| Tool | Purpose |
-|---|---|
-| React 19 | UI library |
-| TypeScript 6 | Type checking |
-| Vite 8 | Bundler & dev server |
-| Vitest 4 | Unit & component testing |
-| react-router-dom 7 | Client-side routing |
-| ESLint 10 | JS/TS linting |
-| Stylelint | CSS linting (enforces `@layer` rules) |
-| pnpm | Package manager |
+| Tool               | Purpose                               |
+|--------------------|---------------------------------------|
+| React 19           | UI library                            |
+| TypeScript 6       | Type checking                         |
+| Vite 8             | Bundler & dev server                  |
+| Vitest 4           | Unit & component testing              |
+| react-router-dom 7 | Client-side routing                   |
+| ESLint 10          | JS/TS linting                         |
+| Stylelint          | CSS linting (enforces `@layer` rules) |
+| pnpm               | Package manager                       |
 
 ## Testing
 
-Tests are co-located with source files (`Foo.test.tsx` beside `Foo.tsx`). Shared mocks live in `src/domain/utils/tests/`. Vitest globals are enabled (`describe`/`it`/`expect` without imports) with a jsdom environment.
+Tests are co-located with source files (`Foo.test.tsx` beside `Foo.tsx`). Shared test utilities live in
+`src/domain/utils/tests/`. Vitest globals are enabled (`describe`/`it`/`expect` without imports) with a jsdom
+environment.
 
-## Project Structure
+### ObjectMother pattern (domain models only)
 
+New tests should use the **ObjectMother** pattern with `@faker-js/faker` instead of static mock data to create domain
+model objects. Each Mother class has a `create(overrides?)` method that produces a valid object with semi-random data:
+
+```ts
+import {ProductMother} from "@/domain/utils/tests";
+
+it("does something", () => {
+    const product = ProductMother.create({price: 999});
+    // ...
+});
 ```
-src/
-├── domain/           # Pure business logic (models, ports)
-├── application/      # Use cases
-├── infrastructure/   # API adapters, cache, HTTP client
-└── presentation/     # React components, hooks, context, router, styles
-```
+

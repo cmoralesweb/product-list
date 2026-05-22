@@ -16,7 +16,9 @@ pnpm lint:css       # Stylelint on src/**/*.css
 ## Architecture
 
 **Clean Architecture** with 4 layers (dependency direction: domain ← application ← infrastructure ← presentation):
-- `src/domain/` — pure models (`Product`, `Cart` types) and ports (interfaces: `ProductRepository`, `CartRepository`, `CacheService`)
+
+- `src/domain/` — pure models (`Product`, `Cart` types) and ports (interfaces: `ProductRepository`, `CartRepository`,
+  `CacheService`)
 - `src/application/` — use case classes with a single `execute()` method
 - `src/infrastructure/` — API adapters (`ProductApiAdapter`, `CartApiAdapter`), `LocalStorageCacheAdapter`, `HttpClient`
 - `src/presentation/` — React UI (atomic design: atoms/molecules/organisms/pages), hooks, context, router, layouts, CSS
@@ -24,6 +26,7 @@ pnpm lint:css       # Stylelint on src/**/*.css
 **DI**: Dependencies created in `App.tsx` and passed as props — no DI framework.
 
 **Routes** (`react-router-dom` v7, `BrowserRouter`):
+
 - `/` → `ProductListPage`
 - `/product/:id` → `ProductDetailPage`
 
@@ -31,7 +34,9 @@ pnpm lint:css       # Stylelint on src/**/*.css
 
 ## Conventions
 
-- **CSS `@layer`**: All CSS declarations must be wrapped in an `@layer` rule. Enforced by a custom Stylelint plugin (`stylelint-plugin-enforce-layer.js`). Global `@import` order: `settings → tools → generic → atoms → molecules → organisms → templates → pages`.
+- **CSS `@layer`**: All CSS declarations must be wrapped in an `@layer` rule. Enforced by a custom Stylelint plugin (
+  `stylelint-plugin-enforce-layer.js`). Global `@import` order:
+  `settings → tools → generic → atoms → molecules → organisms → templates → pages`.
 - **CSS custom properties** for theming in `:root` (`src/presentation/styles/settings.css`).
 - **`import type`**: Required for type-only imports (`verbatimModuleSyntax: true` in tsconfig).
 - **Path alias**: `@/` → `src/`.
