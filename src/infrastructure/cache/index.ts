@@ -1,0 +1,1 @@
+export { LocalStorageCacheAdapter } from "./LocalStorageCacheAdapter";
