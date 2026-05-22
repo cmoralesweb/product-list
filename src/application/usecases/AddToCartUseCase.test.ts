@@ -4,15 +4,25 @@ import { ProductSelectionMother } from "@/domain/utils/tests/models/productSelec
 import { faker } from "@faker-js/faker";
 
 describe("AddToCartUseCase", () => {
-  it("adds to cart and returns count", async () => {
-    const count = faker.number.int();
+  it("calls repo.add with the selection", async () => {
     const selection = ProductSelectionMother.create();
+    const repo = {
+      add: vi.fn().mockResolvedValue({ count: faker.number.int() }),
+    };
+    const useCase = new AddToCartUseCase(repo);
+
+    await useCase.execute(selection);
+
+    expect(repo.add).toHaveBeenCalledWith(selection);
+  });
+
+  it("returns the count from repo", async () => {
+    const count = faker.number.int();
     const repo = { add: vi.fn().mockResolvedValue({ count }) };
     const useCase = new AddToCartUseCase(repo);
 
-    const result = await useCase.execute(selection);
+    const result = await useCase.execute(ProductSelectionMother.create());
 
     expect(result).toEqual({ count });
-    expect(repo.add).toHaveBeenCalledWith(selection);
   });
 });

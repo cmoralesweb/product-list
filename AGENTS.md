@@ -54,6 +54,8 @@ pnpm lint:css       # Stylelint on src/**/*.css
     - All in `src/domain/utils/tests/models/` — barrel exported from `models/index.ts` and `tests/index.ts`.
 - **Port mocks** use `vi.fn()` — `createMockCache()` in `src/domain/utils/tests/ports/mocks.ts`. Inline port mocks in
   test files when used in only one place.
+- **Avoid hardcoding values** in tests — prefer using `faker` or ObjectMothers for data.
+- **Single assertion per test** — tests with "and" in the description are a code smell; split into dedicated tests.
 - Use case tests mock ports with `vi.fn()`. Component tests use `@testing-library/react` +
   `@testing-library/user-event`.
 
