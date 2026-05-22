@@ -1,4 +1,4 @@
-import type { Cart, ProductSelection } from "../models";
+import type { Cart, ProductSelection } from "@/domain";
 
 export interface CartRepository {
   add(selection: ProductSelection): Promise<Cart>;
