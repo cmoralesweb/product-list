@@ -42,8 +42,15 @@ pnpm lint:css       # Stylelint on src/**/*.css
 - **Vitest** with globals enabled (`describe`, `it`, `expect` available without imports).
 - **jsdom** environment, setup via `setupTests.ts` (imports `@testing-library/jest-dom`).
 - **Co-located**: `Foo.test.tsx` / `Foo.test.ts` next to `Foo.tsx` / `Foo.ts`.
-- **Shared mocks** in `src/domain/utils/tests/` — `mockProducts`, `mockProductDetail`, `createMockProductRepo()`, `createMockCartRepo()`, `createMockCache()`.
-- Use case tests mock ports with `vi.fn()`. Component tests use `@testing-library/react` + `@testing-library/user-event`.
+- **ObjectMother pattern** (`@faker-js/faker`) — always use for model data (no static model mocks):
+    - `ProductMother.create(overrides?)` / `ProductMother.createList(count, overrides?)`
+    - `ProductDetailMother.create(overrides?)`
+    - `CartMother.create(overrides?)` / `ProductSelectionMother.create(overrides?)`
+    - All in `src/domain/utils/tests/models/` — barrel exported from `models/index.ts` and `tests/index.ts`.
+- **Port mocks** use `vi.fn()` — `createMockCache()` in `src/domain/utils/tests/ports/mocks.ts`. Inline port mocks in
+  test files when used in only one place.
+- Use case tests mock ports with `vi.fn()`. Component tests use `@testing-library/react` +
+  `@testing-library/user-event`.
 
 ## Config & env
 
