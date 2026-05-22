@@ -8,6 +8,7 @@ pnpm dev            # Vite dev server
 pnpm build          # tsc -b && vite build (type-check first)
 pnpm test           # vitest run (single-run)
 pnpm test:watch     # vitest watch mode
+pnpm test:coverage  # vitest run with coverage (v8, text + lcov + clover)
 pnpm lint           # ESLint flat config on .
 pnpm lint:css       # Stylelint on src/**/*.css
 ```
