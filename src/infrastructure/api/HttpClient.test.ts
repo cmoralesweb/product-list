@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach, vi } from "vitest";
 import { faker } from "@faker-js/faker";
-import { HttpClient } from "./httpClient";
+import { HttpClient } from "@/infrastructure/api/httpClient";
 
 describe("HttpClient", () => {
   afterEach(() => {

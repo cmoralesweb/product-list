@@ -1,7 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { faker } from "@faker-js/faker";
-import { ProductApiAdapter } from "./ProductApiAdapter";
-import type { HttpClient } from "./httpClient";
+import { ProductApiAdapter } from "@/infrastructure";
+import type { HttpClient } from "@/infrastructure/api/httpClient";
 
 describe("ProductApiAdapter", () => {
   describe("getAll", () => {
@@ -118,7 +118,12 @@ describe("ProductApiAdapter", () => {
     });
 
     it("maps DTO typo 'dimentions' to 'dimensions'", async () => {
-      const dimensions = `${faker.number.int({ min: 140, max: 170 })} x ${faker.number.int({ min: 65, max: 85 })} x ${faker.number.int({ min: 6, max: 10 })} mm`;
+      const dimensions = `${faker.number.int({ min: 140, max: 170 })} x ${faker.number.int(
+        {
+          min: 65,
+          max: 85,
+        },
+      )} x ${faker.number.int({ min: 6, max: 10 })} mm`;
       const dto = {
         id: faker.string.uuid(),
         brand: faker.company.name(),

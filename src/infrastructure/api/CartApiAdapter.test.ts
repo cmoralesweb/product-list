@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { faker } from "@faker-js/faker";
-import { CartApiAdapter } from "./CartApiAdapter";
-import type { HttpClient } from "./httpClient";
+import { CartApiAdapter } from "@/infrastructure/api/CartApiAdapter";
+import type { HttpClient } from "@/infrastructure/api/httpClient";
 import { ProductSelectionMother } from "@/domain/utils/tests/models/productSelectionMother";
 
 describe("CartApiAdapter", () => {

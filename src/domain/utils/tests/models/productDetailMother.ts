@@ -4,7 +4,7 @@ import type {
   ProductDetail,
   StorageOption,
 } from "@/domain/models";
-import { ProductMother } from "./productMother";
+import { ProductMother } from "@/domain/utils/tests/models/productMother";
 
 function createColorOptions(): ColorOption[] {
   const colors = [

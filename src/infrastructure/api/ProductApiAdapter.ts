@@ -1,6 +1,6 @@
 import type { ProductRepository } from "@/domain/ports";
 import type { Product, ProductDetail } from "@/domain/models";
-import { HttpClient } from "./httpClient";
+import { HttpClient } from "@/infrastructure/api/httpClient";
 
 interface ProductDto {
   id: string;

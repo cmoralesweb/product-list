@@ -1,6 +1,6 @@
 import type { CartRepository } from "@/domain/ports";
 import type { Cart, ProductSelection } from "@/domain/models";
-import { HttpClient } from "./httpClient";
+import { HttpClient } from "@/infrastructure/api/httpClient";
 
 interface AddToCartRequestDto {
   id: string;

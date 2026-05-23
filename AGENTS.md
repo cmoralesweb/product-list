@@ -39,7 +39,7 @@ pnpm lint:css       # Stylelint on src/**/*.css
   `settings → tools → generic → atoms → molecules → organisms → templates → pages`.
 - **CSS custom properties** for theming in `:root` (`src/presentation/styles/settings.css`).
 - **`import type`**: Required for type-only imports (`verbatimModuleSyntax: true` in tsconfig).
-- **Path alias**: `@/` → `src/`.
+- **Path alias**: `@/` → `src/`. Always use `@/` for imports — never relative paths (`./` or `../`). Barrel `index.ts` files are exempt (they may keep `./` re-exports).
 - **Immutability**: Prefer pure functions and immutable patterns.
 
 ## Testing
