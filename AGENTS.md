@@ -41,6 +41,8 @@ pnpm lint:css       # Stylelint on src/**/*.css
 - **`import type`**: Required for type-only imports (`verbatimModuleSyntax: true` in tsconfig).
 - **Path alias**: `@/` → `src/`. Always use `@/` for imports — never relative paths (`./` or `../`). Barrel `index.ts` files are exempt (they may keep `./` re-exports).
 - **Immutability**: Prefer pure functions and immutable patterns.
+- **React Compiler**: Enabled via `@vitejs/plugin-react`'s `reactCompilerPreset`. The compiler automatically memoizes
+  components and hooks; manual `useMemo`/`useCallback` are unnecessary in most cases.
 
 ## Testing
 

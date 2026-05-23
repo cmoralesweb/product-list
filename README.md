@@ -62,16 +62,16 @@ pnpm lint:css      # Stylelint on src/**/*.css
 
 ## Tech Stack
 
-| Tool               | Purpose                               |
-|--------------------|---------------------------------------|
-| React 19           | UI library                            |
-| TypeScript 6       | Type checking                         |
-| Vite 8             | Bundler & dev server                  |
-| Vitest 4           | Unit & component testing              |
-| react-router-dom 7 | Client-side routing                   |
-| ESLint 10          | JS/TS linting                         |
-| Stylelint          | CSS linting (enforces `@layer` rules) |
-| pnpm               | Package manager                       |
+| Tool               | Purpose                                            |
+|--------------------|----------------------------------------------------|
+| React 19           | UI library (+ React Compiler for auto-memoization) |
+| TypeScript 6       | Type checking                                      |
+| Vite 8             | Bundler & dev server                               |
+| Vitest 4           | Unit & component testing                           |
+| react-router-dom 7 | Client-side routing                                |
+| ESLint 10          | JS/TS linting                                      |
+| Stylelint          | CSS linting (enforces `@layer` rules)              |
+| pnpm               | Package manager                                    |
 
 ## Testing
 
