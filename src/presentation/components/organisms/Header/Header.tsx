@@ -27,13 +27,9 @@ export function Header() {
         <Breadcrumbs items={breadcrumbs} />
       </div>
       <div className="header__right">
-        <Link
-          to="/cart"
-          className="header__cart"
-          aria-label={`Cart with ${count} items`}
-        >
+        <div className="header__cart" aria-label={`Cart with ${count} items`}>
           🛒 <Badge count={count} />
-        </Link>
+        </div>
       </div>
     </header>
   );

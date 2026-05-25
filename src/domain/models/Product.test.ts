@@ -15,9 +15,7 @@ const colors = [
   { code: code1, name: "Black" },
   { code: code2, name: "White" },
 ];
-const storages = [
-  { code: code3, name: "128 GB" },
-];
+const storages = [{ code: code3, name: "128 GB" }];
 
 const populatedOptions = { colors, storages };
 

@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import type { CacheService, ProductRepository } from "@/domain/ports";
 import { MainLayout } from "@/presentation/components/templates/MainLayout";
 import {
-  CartPage,
   ProductDetailPage,
   ProductListPage,
 } from "@/presentation/components/pages";
@@ -29,7 +28,6 @@ export function AppRouter({ productRepo, cache }: AppRouterProps) {
               <ProductDetailPage productRepo={productRepo} cache={cache} />
             }
           />
-          <Route path="cart" element={<CartPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
