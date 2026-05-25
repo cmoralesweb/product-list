@@ -6,6 +6,7 @@ import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import importPlugin from "eslint-plugin-import";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -13,6 +14,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
+  jsxA11y.flatConfigs.recommended,
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
