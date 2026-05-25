@@ -21,6 +21,28 @@ export interface ProductOptions {
   storages: StorageOption[];
 }
 
+export function getColors(options: ProductOptions | undefined): ColorOption[] {
+  return options?.colors ?? [];
+}
+
+export function getStorages(
+  options: ProductOptions | undefined,
+): StorageOption[] {
+  return options?.storages ?? [];
+}
+
+export function getDefaultColorCode(
+  options: ProductOptions | undefined,
+): number | null {
+  return getColors(options)[0]?.code ?? null;
+}
+
+export function getDefaultStorageCode(
+  options: ProductOptions | undefined,
+): number | null {
+  return getStorages(options)[0]?.code ?? null;
+}
+
 export interface ProductDetail extends Product {
   networkTechnology?: string;
   networkSpeed?: string;

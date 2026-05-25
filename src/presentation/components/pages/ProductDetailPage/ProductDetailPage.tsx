@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import type { CacheService, ProductRepository } from "@/domain/ports";
+import {
+  getColors,
+  getDefaultColorCode,
+  getDefaultStorageCode,
+  getStorages,
+} from "@/domain/models";
 import { useCart, useProductDetail } from "@/presentation/hooks";
 import { useSetPageClass } from "@/presentation/context";
 import {
@@ -31,11 +37,11 @@ export function ProductDetailPage({
   const [selectedStorage, setSelectedStorage] = useState<number | null>(null);
   const [adding, setAdding] = useState(false);
 
-  const colors = product?.options?.colors ?? [];
-  const storages = product?.options?.storages ?? [];
+  const colors = getColors(product?.options);
+  const storages = getStorages(product?.options);
 
-  const defaultColor = colors[0]?.code ?? null;
-  const defaultStorage = storages[0]?.code ?? null;
+  const defaultColor = getDefaultColorCode(product?.options);
+  const defaultStorage = getDefaultStorageCode(product?.options);
   const effectiveColor = selectedColor ?? defaultColor;
   const effectiveStorage = selectedStorage ?? defaultStorage;
 
