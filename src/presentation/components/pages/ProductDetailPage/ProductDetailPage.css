@@ -1,0 +1,22 @@
+@layer pages {
+  .page-product-detail {
+    .app-layout__main {
+      row-gap: var(--base-spacing);
+
+      @media screen and (width >= 65rem) {
+        .product-details__info,
+        .add-to-cart,
+        .back-link {
+          grid-column: 7 / -1;
+        }
+
+        .product-details__image {
+          grid-column: 1 / 7;
+          position: sticky;
+          top: calc(var(--header-height) + 1.5rem);
+          align-self: start;
+        }
+      }
+    }
+  }
+}

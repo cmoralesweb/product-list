@@ -1,0 +1,19 @@
+@layer organisms {
+  .add-to-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--color-foreground);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    align-self: start;
+  }
+
+  .add-to-cart label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+}

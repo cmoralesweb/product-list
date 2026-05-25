@@ -1,0 +1,13 @@
+@layer pages {
+  .product-list-page {
+    @media screen and (width >= 65rem) {
+      .page-title {
+        --main-column: main-start / 8;
+      }
+
+      .search-input {
+        --main-column: 10 / main-end;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@layer molecules {
+  .product-attributes {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    dt,
+    dd {
+      padding: 0.5rem;
+
+      @media (width <= 50ch) {
+        grid-column: 1 / -1;
+      }
+
+      &:nth-of-type(2n) {
+        background-color: var(--color-secondary);
+        color: contrast-color(var(--color-secondary));
+      }
+    }
+
+    dt {
+      color: var(--color-text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      padding-inline-end: 1rem;
+    }
+
+    dd {
+      color: var(--color-text);
+    }
+  }
+}

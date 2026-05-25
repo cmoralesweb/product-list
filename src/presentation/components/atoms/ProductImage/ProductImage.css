@@ -1,0 +1,18 @@
+@layer atoms {
+  .product-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: var(--radius);
+  }
+
+  .product-image--fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-border);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+}

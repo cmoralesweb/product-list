@@ -1,0 +1,18 @@
+@layer organisms {
+  .product-details__image .product-image {
+    max-height: 400px;
+  }
+
+  .product-details__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-details__price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,50 @@
+@layer organisms {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    padding: 0 1.5rem;
+    background: var(--color-foreground);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
+  }
+
+  .header__left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header__logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .header__logo:hover {
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .header__right {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__cart {
+    position: relative;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+
+  .header__cart .badge {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+  }
+}

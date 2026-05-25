@@ -1,0 +1,23 @@
+@layer settings {
+  :root {
+    --color-primary: oklch(54.6% 0.245 262deg);
+    --color-primary-hover: oklch(from var(--color-primary) 20% 0.15 h);
+    --color-secondary: oklch(55.4% 0.041 257deg);
+    --color-secondary-hover: oklch(46.8% 0.04 257deg);
+    --color-bg: oklch(98.5% 0 0deg);
+    --color-foreground: oklch(100% 0 0deg);
+    --color-text: oklch(30% 0 0deg);
+    --color-text-muted: oklch(from var(--color-text) 60% c h);
+    --color-border: oklch(92.8% 0.014 249deg);
+    --color-error: oklch(57.7% 0.223 28deg);
+    --radius: 0.5rem;
+    --shadow: 0 1px 3px oklch(0% 0 0deg / 10%), 0 1px 2px oklch(0% 0 0deg / 6%);
+    --shadow-lg:
+      0 4px 6px oklch(0% 0 0deg / 10%), 0 2px 4px oklch(0% 0 0deg / 6%);
+    --header-height: 4rem;
+    --max-container-width: 120ch;
+    --max-reading-width: 65ch;
+    --base-spacing: 1rem;
+    --gutter-width: var(--base-spacing);
+  }
+}

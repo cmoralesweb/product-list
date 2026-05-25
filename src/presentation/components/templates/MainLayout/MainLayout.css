@@ -1,0 +1,27 @@
+@layer templates {
+  .app-layout {
+    flex-direction: column;
+    display: flex;
+    min-height: 100vh;
+    align-content: center;
+  }
+
+  .app-layout__main {
+    --cols: 12;
+    --col-width: calc(var(--max-container-width) / var(--cols));
+    --grid-outer-gutter: var(--gutter-width);
+
+    display: grid;
+    grid-template-columns:
+      [fullbleed-start] minmax(var(--grid-outer-gutter), 1fr)
+      [main-start] repeat(var(--cols), minmax(0, var(--col-width)))
+      [main-end]
+      minmax(var(--grid-outer-gutter, 0), 1fr) [fullbleed-end];
+    column-gap: var(--gutter-width);
+    padding: var(--base-spacing);
+
+    > * {
+      grid-column: var(--main-column, main-start / main-end);
+    }
+  }
+}

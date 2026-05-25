@@ -1,0 +1,39 @@
+@layer atoms {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.15s,
+      opacity 0.15s;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn--primary {
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .btn--primary:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+  }
+
+  .btn--secondary {
+    background: var(--color-secondary);
+    color: #fff;
+  }
+
+  .btn--secondary:hover:not(:disabled) {
+    background: var(--color-secondary-hover);
+  }
+}
